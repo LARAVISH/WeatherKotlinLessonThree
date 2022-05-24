@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">WeatherKotlinLessonThree</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="cities">Cities</string>
+    <string name="title_citi">МОСКВА</string>
+    <string name="size_text_title_city">35sp</string>
+    <string name="feels_like_label">Feels like</string>
+    <string name="temperature_label">Temperature</string>
+    <string name="msc">МОСКВА</string>
+    <string name="content_discript">icon</string>
+    <string name="title_app_bar">WEATHER</string>
+    <string name="title_app_bar_details">Details</string>
 </resources>

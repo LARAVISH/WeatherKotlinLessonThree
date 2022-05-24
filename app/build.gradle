@@ -6,6 +6,12 @@ plugins {
 android {
     compileSdk 32
 
+    buildFeatures{
+        viewBinding true
+    }
+
+    apply plugin : 'kotlin-android-extensions'
+
     defaultConfig {
         applicationId "com.githab.laravish.weatherkotlinlessonthree"
         minSdk 21
