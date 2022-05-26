@@ -10,7 +10,6 @@ import com.githab.laravish.weatherkotlinlessonthree.databinding.FragmentDetailsB
 import com.githab.laravish.weatherkotlinlessonthree.model.Weather
 
 
-
 const val KEY_ARG = "KEY_ARG"
 
 class DetailsFragment : Fragment() {
@@ -25,23 +24,18 @@ class DetailsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
         _binding = FragmentDetailsBinding.inflate(inflater, container, false)
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) = with(binding) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?): Unit = with(binding) {
         super.onViewCreated(view, savedInstanceState)
-
-        val weather = arguments?.getParcelable<Weather>(KEY_ARG)
-        if (weather != null) {
-            setTextWeather(weather)
-        }
+        arguments?.let { it.getParcelable<Weather>(KEY_ARG)?.run { setTextWeather(this) } }
     }
 
-    private fun FragmentDetailsBinding.setTextWeather(
+    private fun setTextWeather(
         weather: Weather
-    ) {
+    ) = with(binding) {
         cityName.text = weather.city.name
         "${weather.city.lat} ${weather.city.lon}".also { cityCoordinates.text = it }
         temperatureValue.text = "${weather.temperature}"
@@ -50,11 +44,7 @@ class DetailsFragment : Fragment() {
 
     companion object {
         @JvmStatic
-        fun newInstance(bundle: Bundle): DetailsFragment {
-            val fragment = DetailsFragment()
-            fragment.arguments = bundle
-            return fragment
-        }
+        fun newInstance(bundle: Bundle) = DetailsFragment().apply { arguments = bundle }
     }
 
     override fun onDestroy() {
