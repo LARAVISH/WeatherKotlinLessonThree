@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import com.githab.laravish.weatherkotlinlessonthree.R
 import com.githab.laravish.weatherkotlinlessonthree.databinding.FragmentMainBinding
 import com.githab.laravish.weatherkotlinlessonthree.model.Weather
@@ -17,6 +16,7 @@ import com.githab.laravish.weatherkotlinlessonthree.viewmodel.AppState
 import com.githab.laravish.weatherkotlinlessonthree.viewmodel.MainViewModel
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_main.*
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainFragment : Fragment(), MyOnClickListener {
 
@@ -26,7 +26,7 @@ class MainFragment : Fragment(), MyOnClickListener {
             return _binding!!
         }
 
-    private val viewModel: MainViewModel by lazy { ViewModelProvider(this).get(MainViewModel::class.java) }
+    private val viewModel: MainViewModel by viewModel()
     private val adapter: MainFragmentAdapter by lazy { MainFragmentAdapter(this) }
     private var isRus = true
 
@@ -41,7 +41,7 @@ class MainFragment : Fragment(), MyOnClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initView()
-        viewModel.getLiveData().observe(viewLifecycleOwner) { renderData(it) }
+        viewModel.liveData.observe(viewLifecycleOwner) { renderData(it) }
         viewModel.getWeatherFromLocalServerRusCities()
     }
 
