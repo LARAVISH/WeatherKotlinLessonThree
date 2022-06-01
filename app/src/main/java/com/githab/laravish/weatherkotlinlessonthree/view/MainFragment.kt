@@ -11,7 +11,6 @@ import com.githab.laravish.weatherkotlinlessonthree.model.Weather
 import com.githab.laravish.weatherkotlinlessonthree.view.adapter.MainFragmentAdapter
 import com.githab.laravish.weatherkotlinlessonthree.view.adapter.MyOnClickListener
 import com.githab.laravish.weatherkotlinlessonthree.view.details.DetailsFragment
-import com.githab.laravish.weatherkotlinlessonthree.view.details.KEY_ARG
 import com.githab.laravish.weatherkotlinlessonthree.viewmodel.AppState
 import com.githab.laravish.weatherkotlinlessonthree.viewmodel.MainViewModel
 import com.google.android.material.snackbar.Snackbar
@@ -117,7 +116,7 @@ class MainFragment : Fragment(), MyOnClickListener {
             supportFragmentManager.beginTransaction()
                 .add(R.id.container, DetailsFragment.newInstance(Bundle().apply {
                     putParcelable(
-                        KEY_ARG, weather
+                       DetailsFragment.KEY_ARG, weather
                     )
                 })).addToBackStack("DetailsFragment").commit()
         }

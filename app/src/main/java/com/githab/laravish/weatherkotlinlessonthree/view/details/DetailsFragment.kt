@@ -13,7 +13,6 @@ import com.githab.laravish.weatherkotlinlessonthree.viewmodel.AppState
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
-const val KEY_ARG = "KEY_ARG"
 
 class DetailsFragment : Fragment() {
 
@@ -79,6 +78,7 @@ class DetailsFragment : Fragment() {
     }
 
     companion object {
+        const val KEY_ARG = "KEY_ARG"
         @JvmStatic
         fun newInstance(bundle: Bundle) = DetailsFragment().apply { arguments = bundle }
     }
