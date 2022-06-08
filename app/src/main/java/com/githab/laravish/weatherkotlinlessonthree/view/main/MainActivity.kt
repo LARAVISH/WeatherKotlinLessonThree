@@ -1,7 +1,7 @@
-package com.githab.laravish.weatherkotlinlessonthree.view
+package com.githab.laravish.weatherkotlinlessonthree.view.main
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.githab.laravish.weatherkotlinlessonthree.R
 
 class MainActivity : AppCompatActivity() {

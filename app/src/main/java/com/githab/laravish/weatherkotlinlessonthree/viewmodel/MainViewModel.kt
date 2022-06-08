@@ -4,7 +4,12 @@ package com.githab.laravish.weatherkotlinlessonthree.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.githab.laravish.weatherkotlinlessonthree.model.Repository
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.isActive
+import kotlinx.coroutines.launch
 
 class MainViewModel(private val repository: Repository) : ViewModel() {
 
@@ -17,15 +22,17 @@ class MainViewModel(private val repository: Repository) : ViewModel() {
 
     private fun getWeather(isRus: Boolean) {
         localLiveData.value = AppState.Loading
-        Thread {
-            Thread.sleep(1000)
-            localLiveData.postValue(
-                if (isRus) {
-                    AppState.Success(repository.getWeatherFromLocalStorageRus())
-                } else {
-                    AppState.Success(repository.getWeatherFromLocalStorageWorld())
-                }
-            )
-        }.start()
+        viewModelScope.launch(Dispatchers.IO) {
+            delay(2000)
+            if (isActive) {
+                localLiveData.postValue(
+                    if (isRus) {
+                        AppState.Success(repository.getWeatherFromLocalStorageRus())
+                    } else {
+                        AppState.Success(repository.getWeatherFromLocalStorageWorld())
+                    }
+                )
+            }
+        }
     }
 }

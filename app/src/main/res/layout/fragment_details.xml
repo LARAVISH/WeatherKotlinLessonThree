@@ -8,6 +8,20 @@
     android:layout_height="match_parent"
     android:background="@color/white">
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="0dp"
+        android:layout_height="75dp"
+        android:scaleType="fitXY"
+        android:layout_marginTop="@dimen/city_name_margin_top"
+        android:layout_marginStart="@dimen/margin_15_dp"
+        android:layout_marginEnd="@dimen/margin_15_dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/cityName"
+        android:contentDescription="@string/app_name" />
+
     <TextView
         android:id="@+id/cityName"
         android:layout_width="wrap_content"
@@ -17,7 +31,8 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imageView"
+        app:layout_constraintBottom_toTopOf="@+id/cityCoordinates"
         tools:text="Москва" />
 
     <TextView

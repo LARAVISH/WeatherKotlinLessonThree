@@ -1,4 +1,4 @@
-package com.githab.laravish.weatherkotlinlessonthree.view
+package com.githab.laravish.weatherkotlinlessonthree.view.main
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -116,9 +116,9 @@ class MainFragment : Fragment(), MyOnClickListener {
             supportFragmentManager.beginTransaction()
                 .add(R.id.container, DetailsFragment.newInstance(Bundle().apply {
                     putParcelable(
-                       DetailsFragment.KEY_ARG, weather
+                        DetailsFragment.KEY_ARG, weather
                     )
-                })).addToBackStack("DetailsFragment").commit()
+                })).addToBackStack("DetailsServiceFragment").commit()
         }
     }
 }

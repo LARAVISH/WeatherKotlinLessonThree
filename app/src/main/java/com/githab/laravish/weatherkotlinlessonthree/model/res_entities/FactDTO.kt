@@ -9,4 +9,3 @@ data class FactDTO(
     val condition: String?
 )
 
-

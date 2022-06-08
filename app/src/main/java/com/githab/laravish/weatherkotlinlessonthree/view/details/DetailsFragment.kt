@@ -6,12 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import coil.load
 import com.githab.laravish.weatherkotlinlessonthree.R
 import com.githab.laravish.weatherkotlinlessonthree.databinding.FragmentDetailsBinding
 import com.githab.laravish.weatherkotlinlessonthree.model.Weather
 import com.githab.laravish.weatherkotlinlessonthree.viewmodel.AppState
 import org.koin.androidx.viewmodel.ext.android.viewModel
-
 
 
 class DetailsFragment : Fragment() {
@@ -73,18 +73,18 @@ class DetailsFragment : Fragment() {
                 temperatureValue.text = appState.weatherData[0].temperature.toString()
                 feelsLikeValue.text = appState.weatherData[0].feelsLike.toString()
                 weatherCondition.text = appState.weatherData[0].condition
+                imageView.load("https://freepngimg.com/thumb/city/36275-3-city-hd.png") {
+                    crossfade(true)
+                    placeholder(R.drawable.ic_launcher_background)
+                }
             }
         }
     }
 
     companion object {
         const val KEY_ARG = "KEY_ARG"
+
         @JvmStatic
         fun newInstance(bundle: Bundle) = DetailsFragment().apply { arguments = bundle }
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        _binding = null
     }
 }
