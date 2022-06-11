@@ -1,8 +1,8 @@
-package com.githab.laravish.weatherkotlinlessonthree.view.main
+package com.githab.laravish.weatherkotlinlessonthree
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.githab.laravish.weatherkotlinlessonthree.R
+import com.githab.laravish.weatherkotlinlessonthree.ui.MainFragment
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

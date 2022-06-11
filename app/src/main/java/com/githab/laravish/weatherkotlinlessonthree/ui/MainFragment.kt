@@ -1,4 +1,4 @@
-package com.githab.laravish.weatherkotlinlessonthree.view.main
+package com.githab.laravish.weatherkotlinlessonthree.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,11 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.githab.laravish.weatherkotlinlessonthree.R
+import com.githab.laravish.weatherkotlinlessonthree.data.Weather
 import com.githab.laravish.weatherkotlinlessonthree.databinding.FragmentMainBinding
-import com.githab.laravish.weatherkotlinlessonthree.model.Weather
-import com.githab.laravish.weatherkotlinlessonthree.view.adapter.MainFragmentAdapter
-import com.githab.laravish.weatherkotlinlessonthree.view.adapter.MyOnClickListener
-import com.githab.laravish.weatherkotlinlessonthree.view.details.DetailsFragment
+import com.githab.laravish.weatherkotlinlessonthree.di.KEY_ARG
+import com.githab.laravish.weatherkotlinlessonthree.ui.adapter.MainFragmentAdapter
+import com.githab.laravish.weatherkotlinlessonthree.ui.adapter.MyOnClickListener
 import com.githab.laravish.weatherkotlinlessonthree.viewmodel.AppState
 import com.githab.laravish.weatherkotlinlessonthree.viewmodel.MainViewModel
 import com.google.android.material.snackbar.Snackbar
@@ -116,7 +116,7 @@ class MainFragment : Fragment(), MyOnClickListener {
             supportFragmentManager.beginTransaction()
                 .add(R.id.container, DetailsFragment.newInstance(Bundle().apply {
                     putParcelable(
-                        DetailsFragment.KEY_ARG, weather
+                        KEY_ARG, weather
                     )
                 })).addToBackStack("DetailsServiceFragment").commit()
         }

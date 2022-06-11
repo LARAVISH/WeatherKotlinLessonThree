@@ -1,6 +1,7 @@
-package com.githab.laravish.weatherkotlinlessonthree.viewmodel.koin
+package com.githab.laravish.weatherkotlinlessonthree
 
 import android.app.Application
+import com.githab.laravish.weatherkotlinlessonthree.di.appModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 

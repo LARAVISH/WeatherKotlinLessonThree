@@ -1,4 +1,6 @@
-package com.githab.laravish.weatherkotlinlessonthree.model
+package com.githab.laravish.weatherkotlinlessonthree.domani
+
+import com.githab.laravish.weatherkotlinlessonthree.data.Weather
 
 interface Repository {
     fun getWeatherFromServer(lat: Double, lon: Double): Weather

@@ -1,8 +1,8 @@
-package com.githab.laravish.weatherkotlinlessonthree.model
+package com.githab.laravish.weatherkotlinlessonthree.rest
 
 import android.os.Build
 import androidx.annotation.RequiresApi
-import com.githab.laravish.weatherkotlinlessonthree.model.res_entities.WeatherDTO
+import com.githab.laravish.weatherkotlinlessonthree.rest.res_entities.WeatherDTO
 import com.google.gson.Gson
 import java.io.BufferedReader
 import java.io.InputStreamReader

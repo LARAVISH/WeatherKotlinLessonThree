@@ -1,11 +1,10 @@
-package com.githab.laravish.weatherkotlinlessonthree.view.details
+package com.githab.laravish.weatherkotlinlessonthree.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.githab.laravish.weatherkotlinlessonthree.model.Repository
-import com.githab.laravish.weatherkotlinlessonthree.viewmodel.AppState
+import com.githab.laravish.weatherkotlinlessonthree.domani.Repository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.isActive

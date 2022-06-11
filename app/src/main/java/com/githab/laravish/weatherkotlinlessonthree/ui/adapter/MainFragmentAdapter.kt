@@ -1,4 +1,4 @@
-package com.githab.laravish.weatherkotlinlessonthree.view.adapter
+package com.githab.laravish.weatherkotlinlessonthree.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.githab.laravish.weatherkotlinlessonthree.R
-import com.githab.laravish.weatherkotlinlessonthree.model.Weather
+import com.githab.laravish.weatherkotlinlessonthree.data.Weather
 
 class MainFragmentAdapter(val listener: MyOnClickListener) :
     RecyclerView.Adapter<MainFragmentAdapter.MyViewHolder>() {

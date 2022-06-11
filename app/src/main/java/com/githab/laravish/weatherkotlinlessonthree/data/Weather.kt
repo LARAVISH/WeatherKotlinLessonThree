@@ -1,4 +1,4 @@
-package com.githab.laravish.weatherkotlinlessonthree.model
+package com.githab.laravish.weatherkotlinlessonthree.data
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
@@ -9,6 +9,7 @@ data class Weather(
     var temperature: Int = 20,
     var feelsLike: Int = 18,
     var condition: String? = "X",
+    val icon:String="skc_n"
 ) : Parcelable
 
 @Parcelize

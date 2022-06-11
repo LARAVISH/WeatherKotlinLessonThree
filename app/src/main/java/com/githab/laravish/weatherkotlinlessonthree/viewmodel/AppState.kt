@@ -1,6 +1,6 @@
 package com.githab.laravish.weatherkotlinlessonthree.viewmodel
 
-import com.githab.laravish.weatherkotlinlessonthree.model.Weather
+import com.githab.laravish.weatherkotlinlessonthree.data.Weather
 
 sealed class AppState {
     object  Loading : AppState()

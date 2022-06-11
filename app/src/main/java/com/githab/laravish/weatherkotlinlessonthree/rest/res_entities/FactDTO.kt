@@ -1,4 +1,4 @@
-package com.githab.laravish.weatherkotlinlessonthree.model.res_entities
+package com.githab.laravish.weatherkotlinlessonthree.rest.res_entities
 
 import com.google.gson.annotations.SerializedName
 
@@ -6,6 +6,8 @@ import com.google.gson.annotations.SerializedName
 data class FactDTO(
     val temp: Int?,
     @SerializedName("feels_like") val feelsLike: Int?,
-    val condition: String?
+    @SerializedName("icon")
+    val icon: String?,
+    val condition: String?,
 )
 
