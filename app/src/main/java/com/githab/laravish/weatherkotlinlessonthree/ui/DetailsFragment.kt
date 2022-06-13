@@ -11,10 +11,10 @@ import coil.ImageLoader
 import coil.decode.SvgDecoder
 import coil.load
 import coil.request.ImageRequest
+import com.githab.laravish.weatherkotlinlessonthree.KEY_ARG
 import com.githab.laravish.weatherkotlinlessonthree.R
 import com.githab.laravish.weatherkotlinlessonthree.data.Weather
 import com.githab.laravish.weatherkotlinlessonthree.databinding.FragmentDetailsBinding
-import com.githab.laravish.weatherkotlinlessonthree.di.KEY_ARG
 import com.githab.laravish.weatherkotlinlessonthree.viewmodel.AppState
 import com.githab.laravish.weatherkotlinlessonthree.viewmodel.DetailsViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -26,6 +26,7 @@ class DetailsFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val viewModel: DetailsViewModel by viewModel()
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -98,7 +99,7 @@ class DetailsFragment : Fragment() {
         iconWeather.loadSvg("https://yastatic.net/weather/i/icons/funky/dark/${appState.weatherData[0].icon}.svg")
     }
 
-   private fun ImageView.loadSvg(url: String) {
+    private fun ImageView.loadSvg(url: String) {
         val imageLoader = ImageLoader.Builder(context)
             .components {
                 add(SvgDecoder.Factory())

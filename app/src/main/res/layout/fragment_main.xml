@@ -9,7 +9,7 @@
         android:layout_height="wrap_content">
 
         <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/tool_bar_list"
+            android:id="@+id/toolBarList"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:title="@string/title_app_bar" />

@@ -5,7 +5,7 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class Weather(
-    val city: City = getDefaultCity(),
+    var city: City = getDefaultCity(),
     var temperature: Int = 20,
     var feelsLike: Int = 18,
     var condition: String? = "X",

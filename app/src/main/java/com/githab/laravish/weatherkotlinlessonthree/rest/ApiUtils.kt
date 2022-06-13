@@ -1,8 +1,8 @@
 package com.githab.laravish.weatherkotlinlessonthree.rest
 
-import com.githab.laravish.weatherkotlinlessonthree.di.BASE_URL_MAIN_PART
-import com.githab.laravish.weatherkotlinlessonthree.di.BASE_VERSION
-import com.githab.laravish.weatherkotlinlessonthree.di.YANDEX_API
+import com.githab.laravish.weatherkotlinlessonthree.BASE_URL_MAIN_PART
+import com.githab.laravish.weatherkotlinlessonthree.BASE_VERSION
+import com.githab.laravish.weatherkotlinlessonthree.YANDEX_API
 import okhttp3.OkHttpClient
 import java.util.concurrent.TimeUnit
 

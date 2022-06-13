@@ -23,7 +23,6 @@ class MainFragmentAdapter(val listener: MyOnClickListener) :
             .inflate(R.layout.item_details_citi_view, parent, false)
     )
 
-
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.bind(this.weather[position])
     }

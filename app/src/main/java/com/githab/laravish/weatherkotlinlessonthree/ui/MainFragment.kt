@@ -1,14 +1,16 @@
 package com.githab.laravish.weatherkotlinlessonthree.ui
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.githab.laravish.weatherkotlinlessonthree.DATA_SET_KEY
+import com.githab.laravish.weatherkotlinlessonthree.KEY_ARG
 import com.githab.laravish.weatherkotlinlessonthree.R
 import com.githab.laravish.weatherkotlinlessonthree.data.Weather
 import com.githab.laravish.weatherkotlinlessonthree.databinding.FragmentMainBinding
-import com.githab.laravish.weatherkotlinlessonthree.di.KEY_ARG
 import com.githab.laravish.weatherkotlinlessonthree.ui.adapter.MainFragmentAdapter
 import com.githab.laravish.weatherkotlinlessonthree.ui.adapter.MyOnClickListener
 import com.githab.laravish.weatherkotlinlessonthree.viewmodel.AppState
@@ -42,6 +44,8 @@ class MainFragment : Fragment(), MyOnClickListener {
         initView()
         viewModel.liveData.observe(viewLifecycleOwner) { renderData(it) }
         viewModel.getWeatherFromLocalServerRusCities()
+        loadDataSet()
+        initDataSet()
     }
 
     private fun initView() {
@@ -51,13 +55,7 @@ class MainFragment : Fragment(), MyOnClickListener {
 
     private fun setRequest() = with(binding) {
         isRus = !isRus
-        if (isRus) {
-            viewModel.getWeatherFromLocalServerRusCities()
-            mainFragmentFAB.setImageResource(R.drawable.ic_russia)
-        } else {
-            viewModel.getWeatherFromLocalServerWorldCities()
-            mainFragmentFAB.setImageResource(R.drawable.ic_earth)
-        }
+        initDataSet()
     }
 
     private fun renderData(appAState: AppState) = with(binding) {
@@ -121,6 +119,35 @@ class MainFragment : Fragment(), MyOnClickListener {
                 })).addToBackStack("DetailsServiceFragment").commit()
         }
     }
+
+    private fun saveDataSetToDisk() {
+        val editor =
+            activity?.getSharedPreferences("namedPreferences", Context.MODE_PRIVATE)?.edit()
+        editor?.putBoolean(DATA_SET_KEY, isRus)
+        editor?.apply()
+    }
+
+    private fun loadDataSet() {
+        activity?.let {
+            isRus = activity?.getSharedPreferences("namedPreferences", Context.MODE_PRIVATE)
+                ?.getBoolean(DATA_SET_KEY, true)
+                ?: true
+        }
+    }
+
+    private fun initDataSet() {
+        if (isRus) {
+            viewModel.getWeatherFromLocalServerRusCities()
+            mainFragmentFAB.setImageResource(R.drawable.ic_russia)
+        } else {
+            viewModel.getWeatherFromLocalServerWorldCities()
+            mainFragmentFAB.setImageResource(R.drawable.ic_earth)
+        }
+        saveDataSetToDisk()
+    }
+
 }
+
+
 
 
