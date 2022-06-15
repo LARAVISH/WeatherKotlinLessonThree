@@ -5,6 +5,12 @@
         android:id="@+id/action_history"
         android:icon="@drawable/ic_baseline_history_edu_24"
         android:title="@string/history"
-        app:showAsAction="ifRoom">
-    </item>
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_contacts"
+        android:icon="@drawable/ic_baseline_contact_page_24"
+        android:title="@string/contacts"
+        app:showAsAction="ifRoom" />
+
 </menu>

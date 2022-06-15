@@ -21,6 +21,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainFragment : Fragment(), MyOnClickListener {
 
+
     private var _binding: FragmentMainBinding? = null
     private val binding: FragmentMainBinding
         get() {
@@ -145,7 +146,6 @@ class MainFragment : Fragment(), MyOnClickListener {
         }
         saveDataSetToDisk()
     }
-
 }
 
 
