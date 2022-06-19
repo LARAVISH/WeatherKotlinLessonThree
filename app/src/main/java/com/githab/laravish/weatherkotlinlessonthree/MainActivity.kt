@@ -5,7 +5,7 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import com.githab.laravish.weatherkotlinlessonthree.provider.ContentProviderFragment
+import com.githab.laravish.weatherkotlinlessonthree.ui.provider.ContentProviderFragment
 import com.githab.laravish.weatherkotlinlessonthree.ui.HistoryWeatherFragment
 import com.githab.laravish.weatherkotlinlessonthree.ui.MainFragment
 

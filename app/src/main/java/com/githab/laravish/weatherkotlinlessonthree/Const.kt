@@ -6,3 +6,5 @@ const val YANDEX_API = "X-Yandex-API-Key"
 const val YANDEX_API_GET_INFORMERS = "informers"
 const val KEY_ARG = "KEY_ARG"
 const val DATA_SET_KEY = "data_key"
+const val MIN_DISTANCE = 100F
+const val REFRESH_PERIOD = 60000L
