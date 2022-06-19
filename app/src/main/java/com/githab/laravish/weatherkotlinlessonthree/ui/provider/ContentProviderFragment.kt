@@ -1,4 +1,4 @@
-package com.githab.laravish.weatherkotlinlessonthree.provider
+package com.githab.laravish.weatherkotlinlessonthree.ui.provider
 
 import android.Manifest
 import android.annotation.SuppressLint
