@@ -3,13 +3,15 @@ package com.githab.laravish.weatherkotlinlessonthree.ui
 import android.Manifest
 import android.annotation.SuppressLint
 import android.app.AlertDialog
-import android.content.Context
+import android.content.*
 import android.content.pm.PackageManager
 import android.location.Geocoder
 import android.location.Location
 import android.location.LocationListener
 import android.location.LocationManager
 import android.os.Bundle
+import android.os.IBinder
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,6 +23,9 @@ import com.githab.laravish.weatherkotlinlessonthree.*
 import com.githab.laravish.weatherkotlinlessonthree.data.City
 import com.githab.laravish.weatherkotlinlessonthree.data.Weather
 import com.githab.laravish.weatherkotlinlessonthree.databinding.FragmentMainBinding
+import com.githab.laravish.weatherkotlinlessonthree.services.BoundService
+import com.githab.laravish.weatherkotlinlessonthree.services.ForegroundService
+import com.githab.laravish.weatherkotlinlessonthree.services.UsualService
 import com.githab.laravish.weatherkotlinlessonthree.ui.adapter.MainFragmentAdapter
 import com.githab.laravish.weatherkotlinlessonthree.ui.adapter.MyOnClickListener
 import com.githab.laravish.weatherkotlinlessonthree.viewmodel.AppState
@@ -32,6 +37,52 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainFragment : Fragment(), MyOnClickListener, CoroutineScope by MainScope() {
 
+    private var isBound = false
+    private var boundService: BoundService.ServiceBinder? = null
+
+    private val boundServiceConnection: ServiceConnection = object : ServiceConnection {
+
+        override fun onServiceConnected(name: ComponentName, service: IBinder) {
+            boundService = service as BoundService.ServiceBinder
+            isBound = boundService != null
+            Log.i("SERVICE", "BOUND SERVICE")
+            Log.i("SERVICE", "next fibonacci: ${service.nextFibonacci}")
+        }
+
+        override fun onServiceDisconnected(name: ComponentName) {
+            isBound = false
+            boundService = null
+        }
+    }
+
+    private val testReceiver: BroadcastReceiver = object : BroadcastReceiver() {
+        override fun onReceive(context: Context?, intent: Intent?) {
+            Toast.makeText(
+                context,
+                "FROM SERVICE: ${intent?.getBooleanExtra(INTENT_SERVICE_DATA, false)}",
+                Toast.LENGTH_SHORT
+            ).show()
+        }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        if (!isBound) {
+            val bindServiceIntent = Intent(context, BoundService::class.java)
+            activity?.bindService(bindServiceIntent,
+                boundServiceConnection,
+                Context.BIND_AUTO_CREATE)
+        }
+        activity?.registerReceiver(testReceiver, IntentFilter(INTENT_ACTION_KEY))
+    }
+
+    override fun onStop() {
+        super.onStop()
+        if (isBound) {
+            activity?.unbindService(boundServiceConnection)
+        }
+        activity?.unregisterReceiver(testReceiver)
+    }
 
     private var _binding: FragmentMainBinding? = null
     private val binding: FragmentMainBinding
@@ -58,6 +109,10 @@ class MainFragment : Fragment(), MyOnClickListener, CoroutineScope by MainScope(
         viewModel.getWeatherFromLocalServerRusCities()
         loadDataSet()
         initDataSet()
+        mainFragmentFABService.setOnClickListener {
+            UsualService.start(requireContext())
+        }
+        ForegroundService.start(requireContext())
     }
 
     private fun initView() {
